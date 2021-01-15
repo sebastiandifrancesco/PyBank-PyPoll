@@ -8,10 +8,10 @@ khan = 'Khan'
 correy = 'Correy'
 li = 'Li'
 oTooley = "O'Tooley"
-khanCount = 0
-correyCount = 0
-liCount = 0
-oTooleyCount = 0
+khanCount = 0.00
+correyCount = 0.00
+liCount = 0.00
+oTooleyCount = 0.00
 winner = ['',0]
 csvpath = os.path.join('..', 'Resources', 'election_data.csv')
 with open(csvpath) as csvfile:
@@ -30,13 +30,13 @@ with open(csvpath) as csvfile:
     # Tracks vote count
     for candidate in candidates:
         if candidate == khan:
-            khanCount += 1
+            khanCount += 1.00
         elif candidate == correy:
-            correyCount += 1
+            correyCount += 1.00
         elif candidate == li:
-            liCount += 1
+            liCount += 1.00
         else:
-            oTooleyCount += 1
+            oTooleyCount += 1.00
     
     # Determines winner
     if khanCount > winner[1]:
@@ -54,10 +54,10 @@ with open(csvpath) as csvfile:
     
     # Determines candidates' percentages
     totalVotes = khanCount + correyCount + liCount + oTooleyCount
-    khanPercent = str(round(((khanCount / totalVotes) * 100), 3)) + '%'
-    correyPercent = str(round(((correyCount / totalVotes) * 100), 3)) + '%'
-    liPercent = str(round(((liCount / totalVotes) * 100), 3)) + '%'
-    oTooleyPercent = str(round(((oTooleyCount / totalVotes) * 100), 3)) + '%'
+    khanPercent = str('%.2f' % ((khanCount / totalVotes) * 100)) + '%'
+    correyPercent = str('%.2f' % ((correyCount / totalVotes) * 100)) + '%'
+    liPercent = str('%.2f' % ((liCount / totalVotes) * 100)) + '%'
+    oTooleyPercent = str('%.2f' % ((oTooleyCount / totalVotes) * 100)) + '%'
 
     if khanCount > winner[1]:
         winner = khanCount
@@ -92,7 +92,7 @@ with open(csvpath) as csvfile:
     print('Winner: ' + winner[0])
     print('-------------------------')
 
-    # Writes eletion resutls to a txt file
+    # Writes eletion results to a txt file
     file = open('election-analysis.txt', 'w')
     file.write('Election Results' + '\n')
     file.write('-------------------------' + '\n')
